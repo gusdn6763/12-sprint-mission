@@ -53,7 +53,7 @@ public class BasicChannelService implements ChannelService {
     }
 
     request.participantIds().stream()
-        .map(userId -> new ReadStatus(userId, createdChannel.getId(), Instant.MIN))
+        .map(userId -> new ReadStatus(userId, createdChannel.getId(), createdChannel.getCreatedAt()))
         .forEach(readStatusRepository::save);
 
     return channelDtoMapper.toDto(createdChannel);
